@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import { requestNrealAccess, setReportHandler } from "./usb";
 
+/*
+References
+- <https://gitlab.com/TheJackiMonster/nrealAirLinuxDriver>
+- <https://github.com/abls/real-air>
+- <https://github.com/MSmithDev/AirAPI_Windows>
+- <https://github.com/jakedowns/nresearch/blob/main/js_air/manager.js>
+*/
 function App() {
   const [latestReport, setLatestReport] = useState<string>("…");
   useEffect(() => {
@@ -27,26 +32,6 @@ function App() {
         lines.push(text + ": " + format(slice));
         return slice;
       };
-      // uint8_t signature [2];
-      // uint8_t temperature [2];
-      // uint64_t timestamp;
-      // uint8_t angular_multiplier [2];
-      // uint8_t angular_divisor [4];
-      // uint8_t angular_velocity_x [3];
-      // uint8_t angular_velocity_y [3];
-      // uint8_t angular_velocity_z [3];
-      // uint8_t acceleration_multiplier [2];
-      // uint8_t acceleration_divisor [4];
-      // uint8_t acceleration_x [3];
-      // uint8_t acceleration_y [3];
-      // uint8_t acceleration_z [3];
-      // uint8_t magnetic_multiplier [2];
-      // uint8_t magnetic_divisor [4];
-      // uint8_t magnetic_x [2];
-      // uint8_t magnetic_y [2];
-      // uint8_t magnetic_z [2];
-      // uint32_t checksum;
-      // uint8_t _padding [6];
 
       extractAndPrint("signature", 2);
       extractAndPrint("temperature", 2);
