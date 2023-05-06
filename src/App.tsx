@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     let unmounted = false;
     setReportHandler((index, data) => {
+      void index;
       if (unmounted) return;
       if (data.length !== 64) return;
       const lines: string[] = [];
